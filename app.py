@@ -12,7 +12,9 @@ def home():
 def result():
     # Step 1: Get what the user typed in the form
     child_name = request.form.get('child_name', 'Your Child')
-    age_months = int(request.form.get('age_months', 0))
+    age_years = int(request.form.get('age_years', 0) or 0)
+    age_months_extra = int(request.form.get('age_months_extra', 0) or 0)
+    age_months = (age_years * 12) + age_months_extra
     
     # Step 2: Get the list of vaccines already received
     # The form sends them as a comma-separated string e.g. "BCG, OPV-0"

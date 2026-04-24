@@ -26,11 +26,21 @@
                            placeholder="e.g. Priya" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="age_months">Child's Age (in months)</label>
-                    <input type="number" id="age_months" name="age_months" 
-                           placeholder="e.g. 14" min="0" max="60" required>
-                </div>
+               <div class="form-group">
+    <label>Child's Age</label>
+    <div class="age-row">
+        <div class="form-group">
+            <input type="number" id="age_years" name="age_years"
+                   placeholder="Years" min="0" max="18">
+            <small>Years</small>
+        </div>
+        <div class="form-group">
+            <input type="number" id="age_months_extra" name="age_months_extra"
+                   placeholder="Months" min="0" max="11">
+            <small>Months (0–11)</small>
+        </div>
+    </div>
+</div>
 
                 <div class="form-group">
                     <label for="vaccines_received">Vaccines Already Received</label>

@@ -1,0 +1,111 @@
+/* ===== BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #1a2a3a;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(135deg, #042C53, #0C447C);
+    color: white;
+    padding: 28px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+header p {
+    font-size: 1rem;
+    color: #B5D4F4;
+    letter-spacing: 0.3px;
+}
+
+/* ===== MAIN LAYOUT ===== */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    color: #042C53;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #5a7a9a;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+/* ===== FORM ===== */
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #042C53;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #d0dde8;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1a2a3a;
+    transition: border-color 0.2s;
+    background: #f8fafc;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0C447C;
+    background: white;
+}
+
+.form-group small {
+    display: block;
+    color: #7a9ab8;
+    margin-top: 6px;
+    font-size: 0.82rem;
+}
+
+.age-row {
+    display: flex;
+    gap: 16px;
+}
+
+.age-row .form-group {
+    flex: 
