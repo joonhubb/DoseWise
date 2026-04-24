@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoseWise — {{ child_name }}'s Schedule</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>💉 DoseWise</h1>
+        <p>Personalized WHO vaccination schedules for every child</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>{{ child_name }}'s Vaccination Schedule</h2>
+            <p class="subtitle">Age: <strong>{{ age_months }} months</strong></p>
+
+            <!-- OVERDUE SECTION -->
+            {% if overdue %}
+            <div class="section overdue-section">
+                <h3>⚠️ Overdue Vaccines ({{ overdue|length }})</h3>
+                <p class="section-desc">These vaccines were due but haven't been recorded. Please consult a doctor.</p>
+                <div class="vaccine-grid">
+                    {% for v in overdue %}
+                    <div class="vaccine-card overdue">
+                        <strong>{{ v.name }}</strong>
+                        <span>{{ v.description }}</span>
+                        <span class="tag">Was due at {{ v.due_age }} months</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- UPCOMING SECTION -->
+            {% if upcoming %}
+            <div class="section upcoming-section">
+                <h3>🔜 Upcoming Vaccines ({{ upcoming|length }})</h3>
+                <p class="section-desc">These vaccines are due in the future. Mark them on your calendar!</p>
+                <div class="vaccine-grid">
+                    {% for v in upcoming %}
+                    <div class="vaccine-card upcoming">
+                        <strong>{{ v.name }}</strong>
+                        <span>{{ v.description }}</span>
+                        <span class="tag">Due at {{ v.due_age }} months 
+                            ({{ v.months_away }} month{{ 's' if v.months_away != 1 else '' }} away)
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- DONE SECTION -->
+            {% if done %}
+            <div class="section done-section">
+                <h3>✅ Completed Vaccines ({{ done|length }})</h3>
+                <p class="section-desc">Great job! These vaccines have been administered.</p>
+                <div class="vaccine-grid">
+                    {% for v in done %}
+                    <div class="vaccine-card done">
+                        <strong>{{ v.name }}</strong>
+                        <span>{{ v.description }}</span>
+                        <span class="tag">Given at {{ v.due_age }} months</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- IF EVERYTHING IS DONE -->
+            {% if not overdue and not upcoming %}
+            <div class="all-done">
+                <h3>🎉 All vaccines are up to date!</h3>
+                <p>{{ child_name }} is fully vaccinated for their age. Well done!</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div class="back-link">
+            <a href="/">← Check another child</a>
+        </div>
+
+        <div class="sdg-badge">
+            <span>🌍 Supporting UN SDG 3 — Good Health & Well-being</span>
+        </div>
+    </main>
+
+</body>
+</html>
