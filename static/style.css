@@ -73,6 +73,11 @@ a { text-decoration: none; color: inherit; }
     background: radial-gradient(ellipse at top, #0c2340 0%, #060d1a 70%);
     position: relative;
     overflow: hidden;
+    min-height: 92vh;
+    background-image: url('/static/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+
 }
 
 .hero::before {
@@ -466,7 +471,7 @@ footer {
     font-weight: 700;
     color: #e0eaf5;
 }
-/* ===== ANIMATIONS ===== */
+
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
