@@ -5,31 +5,32 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    # Just shows the input form (index.html)
     return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/stats')
+def stats():
+    return render_template('stats.html')
+
+@app.route('/scheduler')
+def scheduler():
+    return render_template('scheduler.html')
 
 @app.route('/result', methods=['POST'])
 def result():
-    # Step 1: Get what the user typed in the form
     child_name = request.form.get('child_name', 'Your Child')
     age_years = int(request.form.get('age_years', 0) or 0)
     age_months_extra = int(request.form.get('age_months_extra', 0) or 0)
     age_months = (age_years * 12) + age_months_extra
-    
-    # Step 2: Get the list of vaccines already received
-    # The form sends them as a comma-separated string e.g. "BCG, OPV-0"
     vaccines_input = request.form.get('vaccines_received', '')
-    
-    # Step 3: Split by comma and strip extra spaces
     if vaccines_input.strip() == '':
         vaccines_received = []
     else:
         vaccines_received = [v.strip() for v in vaccines_input.split(',')]
-    
-    # Step 4: Call our vaccines.py brain
     done, overdue, upcoming = get_schedule(age_months, vaccines_received)
-    
-    # Step 5: Send everything to result.html to display
     return render_template('result.html',
         child_name=child_name,
         age_months=age_months,
