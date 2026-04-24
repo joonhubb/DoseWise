@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoseWise — Get Your Schedule</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include 'nav.html' %}
+
+    <div class="page-header">
+        <h1>💉 Get Your Schedule</h1>
+        <p>Enter your child's details below to generate a personalized WHO-standard vaccination schedule.</p>
+    </div>
+
+    <div class="scheduler-wrap">
+        <div class="card">
+            <h2>Child's Details</h2>
+            <p class="subtitle">All fields are processed privately — nothing is stored.</p>
+
+            <form action="/result" method="POST">
+
+                <div class="form-group">
+                    <label for="child_name">Child's Name</label>
+                    <input type="text" id="child_name" name="child_name"
+                           placeholder="e.g. Priya" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Child's Age</label>
+                    <div class="age-row">
+                        <div class="form-group">
+                            <input type="number" id="age_years" name="age_years"
+                                   placeholder="Years" min="0" max="18">
+                            <small>Years</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="age_months_extra" name="age_months_extra"
+                                   placeholder="Months" min="0" max="11">
+                            <small>Months (0–11)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vaccines_received">Vaccines Already Received</label>
+                    <input type="text" id="vaccines_received" name="vaccines_received"
+                           placeholder="e.g. BCG, OPV-0, Hepatitis B">
+                    <small>Leave blank if none. Separate multiple vaccines with commas.</small>
+                </div>
+
+                <button type="submit">Generate Schedule →</button>
+
+            </form>
+        </div>
+
+        <div class="sdg-badge">
+            🌍 Supporting UN SDG 3 — Good Health & Well-being
+        </div>
+    </div>
+
+    <footer>
+        <p>💉 DoseWise — Built for GNEC Hackathon 2026 · SDG 3: Good Health & Well-being</p>
+    </footer>
+
+</body>
+</html>
