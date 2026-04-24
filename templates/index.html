@@ -8,56 +8,50 @@
 </head>
 <body>
 
-    <header>
-        <h1>💉 DoseWise</h1>
-        <p>Personalized WHO vaccination schedules for every child</p>
-    </header>
+    {% include 'nav.html' %}
 
-    <main>
-        <div class="card">
-            <h2>Enter Child's Details</h2>
-            <p class="subtitle">Fill in the details below to generate a personalized vaccination schedule.</p>
-
-            <form action="/result" method="POST">
-
-                <div class="form-group">
-                    <label for="child_name">Child's Name</label>
-                    <input type="text" id="child_name" name="child_name" 
-                           placeholder="e.g. Priya" required>
-                </div>
-
-               <div class="form-group">
-    <label>Child's Age</label>
-    <div class="age-row">
-        <div class="form-group">
-            <input type="number" id="age_years" name="age_years"
-                   placeholder="Years" min="0" max="18">
-            <small>Years</small>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🌍 Supporting UN SDG 3 — Health & Well-being</div>
+            <h1>Never Miss a<br><span>Life-Saving Dose</span></h1>
+            <p>DoseWise generates personalized WHO-standard vaccination schedules for your child — instantly, accurately, and for free.</p>
+            <div class="hero-buttons">
+                <a href="/scheduler" class="btn-primary">Get Your Schedule →</a>
+                <a href="/about" class="btn-secondary">Why Vaccines Matter</a>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="number" id="age_months_extra" name="age_months_extra"
-                   placeholder="Months" min="0" max="11">
-            <small>Months (0–11)</small>
+    </section>
+
+    <section class="features">
+        <div class="section-title">
+            <h2>How DoseWise Helps</h2>
+            <p>Simple, powerful tools to keep your child protected</p>
         </div>
-    </div>
-</div>
-
-                <div class="form-group">
-                    <label for="vaccines_received">Vaccines Already Received</label>
-                    <input type="text" id="vaccines_received" name="vaccines_received"
-                           placeholder="e.g. BCG, OPV-0, Hepatitis B">
-                    <small>Leave blank if none. Separate multiple vaccines with commas.</small>
-                </div>
-
-                <button type="submit">Generate Schedule →</button>
-
-            </form>
-        </div>
-
-        <div class="sdg-badge">
-            <span>🌍 Supporting UN SDG 3 — Good Health & Well-being</span>
-        </div>
-    </main>
-
-</body>
-</html>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>WHO-Standard Schedules</h3>
+                <p>Every recommendation is based on official World Health Organization vaccination guidelines used by doctors globally.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚠️</div>
+                <h3>Overdue Alerts</h3>
+                <p>Instantly see which vaccines your child has missed and how urgent it is to get them — no guesswork needed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Upcoming Reminders</h3>
+                <p>Know exactly which vaccines are coming up and when, so you can plan ahead with your doctor.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Built for Everyone</h3>
+                <p>Designed for parents in underserved communities where access to healthcare guidance is limited.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Results</h3>
+                <p>Enter your child's age and vaccine history — get a complete personalized schedule in seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">�
