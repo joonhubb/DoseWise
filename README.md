@@ -13,13 +13,11 @@
 
 </div>
 
-
 ## 🌍 The Problem
 
 Every year, **1.5 million children** die from diseases that vaccines could have prevented. Not because vaccines don't exist — but because families missed doses, lost track of schedules, or simply didn't know what their child needed.
 
-DoseWise solves this.
-
+                                 *DoseWise solves this*
 
 ## ✨ Features
 
@@ -29,3 +27,23 @@ DoseWise solves this.
 - 🔍 **Smart Autocomplete** — Type a vaccine name and get instant suggestions
 - 🌍 **Built for Everyone** — Designed for parents in underserved communities
 - 🔒 **Privacy First** — No data is ever stored or shared
+
+## 🎯 SDG Alignment
+
+Supports **UN SDG 3 — Good Health and Well-being**, specifically SDG 3.b (access to vaccines for all) and SDG 3.8 (universal health coverage).
+
+## 👩‍💻 Tech Stack
+
+Python · Flask · HTML · CSS · Jinja2 · WHO Immunization Data
+
+## 🏆 Built For
+
+**GNEC Hackathon 2026 Spring** — Compete for UN-Affiliated/NGO Internships & Prizes
+
+<div align="center">
+
+Made with ❤️ for the children who deserve a healthy future
+
+*💉 DoseWise — Because every dose matters.*
+
+</div>
