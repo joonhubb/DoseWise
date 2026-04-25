@@ -84,6 +84,15 @@
         </div>
         {% endif %}
 
+        <form action="/download-pdf" method="POST" style="text-align:center; margin-bottom: 20px;">
+    <input type="hidden" name="child_name" value="{{ child_name }}">
+    <input type="hidden" name="age_months" value="{{ age_months }}">
+    <input type="hidden" name="vaccines_received" value="{{ done|map(attribute='name')|join(', ') }}">
+    <button type="submit" class="btn-primary" style="width:auto; padding: 12px 32px;">
+        📄 Download PDF Schedule
+    </button>
+</form>
+
         <div class="back-link">
             <a href="/scheduler">← Check another child</a>
         </div>
@@ -99,4 +108,5 @@
     </footer>
 
 </body>
+
 </html>
