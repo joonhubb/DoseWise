@@ -13,7 +13,6 @@
 
 </div>
 
----
 
 ## 🌍 The Problem
 
@@ -21,7 +20,6 @@ Every year, **1.5 million children** die from diseases that vaccines could have 
 
 DoseWise solves this.
 
----
 
 ## ✨ Features
 
@@ -31,41 +29,3 @@ DoseWise solves this.
 - 🔍 **Smart Autocomplete** — Type a vaccine name and get instant suggestions
 - 🌍 **Built for Everyone** — Designed for parents in underserved communities
 - 🔒 **Privacy First** — No data is ever stored or shared
-
----
-
-## 🖥️ Pages
-
-| Page | Description |
-|------|-------------|
-| 🏠 Home | Hero landing page with features overview |
-| 💉 Scheduler | Enter child's details and get instant schedule |
-| 📊 Stats | Global vaccination statistics and impact data |
-| ℹ️ About | Why vaccines matter and our mission |
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Python 3.x
-- pip
-
-### Installation
-
-```bash
-git clone https://github.com/YOUR_USERNAME/DoseWise.git
-
-cd DoseWise
-
-pip install flask
-
-
-python app.py
-```
-
-Then open `http://127.0.0.1:5000` in your browser!
-
-
-
-## 🗂️ Project Structure
