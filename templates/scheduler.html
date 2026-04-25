@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoseWise — Get Your Schedule</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     {% include 'nav.html' %}
 
     <div class="page-header">
-        <h1>💉 Get Your Schedule</h1>
-        <p>Enter your child's details below to generate a personalized WHO-standard vaccination schedule.</p>
-    </div>
+    <p class="hero-brand" style="font-size:2.5rem; margin-bottom:4px;">GET YOUR SCHEDULE</p>
+    <p class="hero-brand-sub" style="margin-bottom:0;">Generate a WHO-Standard Vaccination Plan</p>
+</div>
 
     <div class="scheduler-wrap">
         <div class="card">
@@ -44,11 +45,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="position:relative;">
                     <label for="vaccines_received">Vaccines Already Received</label>
                     <input type="text" id="vaccines_received" name="vaccines_received"
-                           placeholder="e.g. BCG, OPV-0, Hepatitis B">
-                    <small>Leave blank if none. Separate multiple vaccines with commas.</small>
+                           placeholder="e.g. BCG, OPV-0, Hepatitis B"
+                           autocomplete="off">
+                    <small>Leave blank if none. Type to search, click to add.</small>
+                    <div id="suggestion-box"></div>
                 </div>
 
                 <button type="submit">Generate Schedule →</button>
@@ -64,6 +67,76 @@
     <footer>
         <p>💉 DoseWise — Built for GNEC Hackathon 2026 · SDG 3: Good Health & Well-being</p>
     </footer>
+
+<script>
+const vaccines = [
+    "BCG", "OPV-0", "OPV-1", "OPV-2", "OPV-3",
+    "Hepatitis B", "Hepatitis A", "DPT-1", "DPT-2", "DPT-3", "DPT-B",
+    "PCV-1", "PCV-2", "MMR", "MMR-2", "Rotavirus-1", "Rotavirus-2",
+    "Typhoid", "Varicella"
+];
+
+const input = document.getElementById('vaccines_received');
+const box = document.getElementById('suggestion-box');
+
+box.style.cssText = `
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #0d1b2e;
+    border: 1.5px solid #1a6bb5;
+    border-radius: 10px;
+    z-index: 999;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    margin-top: 4px;
+`;
+
+input.addEventListener('input', function() {
+    const parts = this.value.split(',');
+    const current = parts[parts.length - 1].trim().toLowerCase();
+    box.innerHTML = '';
+
+    if (current.length === 0) { box.style.display = 'none'; return; }
+
+    const already = parts.slice(0, -1).map(p => p.trim().toLowerCase());
+    const matches = vaccines.filter(v =>
+        v.toLowerCase().includes(current) && !already.includes(v.toLowerCase())
+    );
+
+    if (matches.length === 0) { box.style.display = 'none'; return; }
+
+    matches.forEach(vaccine => {
+        const item = document.createElement('div');
+        item.textContent = vaccine;
+        item.style.cssText = `
+            padding: 10px 16px;
+            cursor: pointer;
+            color: #e0eaf5;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #1a2d45;
+        `;
+        item.addEventListener('mouseenter', () => item.style.background = '#1a2d45');
+        item.addEventListener('mouseleave', () => item.style.background = 'transparent');
+        item.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            parts[parts.length - 1] = ' ' + vaccine;
+            input.value = parts.join(',') + ', ';
+            box.style.display = 'none';
+            input.focus();
+        });
+        box.appendChild(item);
+    });
+
+    box.style.display = 'block';
+});
+
+input.addEventListener('blur', () => {
+    setTimeout(() => box.style.display = 'none', 150);
+});
+</script>
 
 </body>
 </html>

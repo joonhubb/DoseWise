@@ -18,7 +18,6 @@
             <h2>{{ child_name }}'s Vaccination Schedule</h2>
             <p class="subtitle">Age: <strong>{{ age_months }} months</strong></p>
 
-            <!-- OVERDUE SECTION -->
             {% if overdue %}
             <div class="section overdue-section">
                 <h3>⚠️ Overdue Vaccines ({{ overdue|length }})</h3>
@@ -35,7 +34,6 @@
             </div>
             {% endif %}
 
-            <!-- UPCOMING SECTION -->
             {% if upcoming %}
             <div class="section upcoming-section">
                 <h3>🔜 Upcoming Vaccines ({{ upcoming|length }})</h3>
@@ -54,7 +52,6 @@
             </div>
             {% endif %}
 
-            <!-- DONE SECTION -->
             {% if done %}
             <div class="section done-section">
                 <h3>✅ Completed Vaccines ({{ done|length }})</h3>
@@ -71,7 +68,6 @@
             </div>
             {% endif %}
 
-            <!-- IF EVERYTHING IS DONE -->
             {% if not overdue and not upcoming %}
             <div class="all-done">
                 <h3>🎉 All vaccines are up to date!</h3>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoseWise — Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <div class="page-header">
+        <p class="hero-brand" style="font-size:2rem;">GLOBAL STATS</p>
+        <p class="hero-brand-sub">The numbers behind the crisis</p>
+    </div>
+
+    <div class="content-section">
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">1.5M</div>
+                <div class="stat-label">Children die every year from vaccine-preventable diseases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Reduction in polio cases since the vaccine was introduced</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25%</div>
+                <div class="stat-label">Of all under-5 deaths are from vaccine-preventable diseases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">300M</div>
+                <div class="stat-label">People killed by smallpox in the 20th century — now eradicated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2B+</div>
+                <div class="stat-label">People vaccinated against COVID-19 in 2021 alone</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$16</div>
+                <div class="stat-label">Saved in healthcare costs for every $1 spent on vaccines</div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>📊 The Vaccination Gap</h2>
+            <p>Despite vaccines being one of the most cost-effective health interventions ever developed, millions of children remain unvaccinated or under-vaccinated every year. The gap is largest in Sub-Saharan Africa and South Asia, where healthcare infrastructure is limited and families often lack access to clear guidance.</p>
+            <p>The WHO's Expanded Programme on Immunization (EPI) has saved an estimated 154 million lives since 1974 — making it one of the greatest public health achievements in history. Yet we still lose 1.5 million children annually to diseases we have vaccines for.</p>
+        </div>
+
+        <div class="content-block warning-block">
+            <h2>🚨 The Misinformation Threat</h2>
+            <p>Vaccine hesitancy — driven by misinformation on social media — has been listed by the WHO as one of the top 10 threats to global health. Measles cases have surged in countries that previously had near-zero rates, entirely due to declining vaccination coverage.</p>
+            <p>DoseWise fights this by providing clear, WHO-based, science-backed guidance — making it easier for parents to do the right thing for their children.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>🎯 SDG 3 — Good Health & Well-being</h2>
+            <p>The United Nations Sustainable Development Goal 3 calls for ensuring healthy lives and promoting well-being for all at all ages. Target 3.b specifically calls for supporting access to vaccines for all countries, particularly developing nations.</p>
+            <p>DoseWise directly supports SDG 3.b by making WHO vaccination schedules accessible to any parent with internet access — breaking down barriers of language, literacy, and geography.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>💉 DoseWise — Built for GNEC Hackathon 2026 · SDG 3: Good Health & Well-being</p>
+    </footer>
+</body>
+</html>
