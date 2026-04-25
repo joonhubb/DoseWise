@@ -46,6 +46,39 @@ WHO_SCHEDULE = [
     {"name": "HPV-3",         "age_months": 180, "description": "HPV 3rd dose if not completed earlier (15 years)"},
 ]
 
+# Risk levels for overdue vaccines
+RISK_LEVELS = {
+    "BCG":           {"level": "high",   "reason": "TB can be fatal in infants"},
+    "OPV-0":         {"level": "high",   "reason": "Polio can cause permanent paralysis"},
+    "OPV-1":         {"level": "high",   "reason": "Polio can cause permanent paralysis"},
+    "OPV-2":         {"level": "high",   "reason": "Polio can cause permanent paralysis"},
+    "OPV-3":         {"level": "high",   "reason": "Polio can cause permanent paralysis"},
+    "Hepatitis B":   {"level": "high",   "reason": "Can cause liver failure if untreated"},
+    "DPT-1":         {"level": "high",   "reason": "Whooping cough is fatal in infants"},
+    "DPT-2":         {"level": "high",   "reason": "Whooping cough is fatal in infants"},
+    "DPT-3":         {"level": "high",   "reason": "Whooping cough is fatal in infants"},
+    "DPT-B":         {"level": "medium", "reason": "Protection weakens without booster"},
+    "MMR":           {"level": "high",   "reason": "Measles kills 100,000+ children yearly"},
+    "MMR-2":         {"level": "medium", "reason": "Booster ensures full protection"},
+    "Rotavirus-1":   {"level": "medium", "reason": "Leading cause of child diarrhea deaths"},
+    "Rotavirus-2":   {"level": "medium", "reason": "Leading cause of child diarrhea deaths"},
+    "PCV-1":         {"level": "high",   "reason": "Pneumonia is a top killer of children"},
+    "PCV-2":         {"level": "high",   "reason": "Pneumonia is a top killer of children"},
+    "PCV-3":         {"level": "medium", "reason": "Booster strengthens protection"},
+    "IPV":           {"level": "high",   "reason": "Polio can cause permanent paralysis"},
+    "Hib-1":         {"level": "high",   "reason": "Can cause bacterial meningitis"},
+    "Hib-2":         {"level": "high",   "reason": "Can cause bacterial meningitis"},
+    "Hib-3":         {"level": "medium", "reason": "Booster ensures full protection"},
+    "Typhoid":       {"level": "medium", "reason": "Typhoid spreads quickly in communities"},
+    "Hepatitis A":   {"level": "medium", "reason": "Liver infection, spreads through food/water"},
+    "Varicella":     {"level": "low",    "reason": "Chickenpox can cause complications"},
+    "Vitamin A":     {"level": "medium", "reason": "Deficiency causes blindness in children"},
+    "Meningococcal": {"level": "high",   "reason": "Bacterial meningitis can be fatal within 24hrs"},
+    "HPV-1":         {"level": "medium", "reason": "HPV causes cervical cancer"},
+    "HPV-2":         {"level": "medium", "reason": "HPV causes cervical cancer"},
+    "Tdap":          {"level": "medium", "reason": "Tetanus protection weakens over time"},
+}
+
 def get_schedule(age_months, vaccines_received):
      
     done = []
@@ -72,6 +105,16 @@ def get_schedule(age_months, vaccines_received):
                 "due_age": due_age,
                 "overdue_by": age_months - due_age
             })
+        elif due_age <= age_months:
+             risk = RISK_LEVELS.get(name, {"level": "medium", "reason": "Consult your doctor"})
+             overdue.append({
+         "name": name,
+         "description": description,
+         "due_age": due_age,
+         "overdue_by": age_months - due_age,
+         "risk_level": risk["level"],
+         "risk_reason": risk["reason"]
+            })
         else:
             # Not due yet — upcoming
             upcoming.append({
@@ -80,6 +123,7 @@ def get_schedule(age_months, vaccines_received):
                 "due_age": due_age,
                 "months_away": due_age - age_months
             })
+        
 
     # Sort upcoming by how soon they are due
     upcoming.sort(key=lambda x: x["months_away"])

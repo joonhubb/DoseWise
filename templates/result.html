@@ -18,24 +18,19 @@
 
     <div class="result-wrap">
 
-        {% if overdue %}
-        <div class="section overdue-section">
-            <div class="section-header">
-                <h3>⚠️ Overdue Vaccines</h3>
-                <span class="count">{{ overdue|length }}</span>
-            </div>
-            <p class="section-desc">These vaccines were due but haven't been recorded. Please consult a doctor.</p>
-            <div class="vaccine-grid">
-                {% for v in overdue %}
-                <div class="vaccine-card overdue">
-                    <strong>{{ v.name }}</strong>
-                    <span>{{ v.description }}</span>
-                    <span class="tag">Was due at {{ v.due_age }} months</span>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
+        {% for v in overdue %}
+<div class="vaccine-card overdue risk-{{ v.risk_level }}">
+    <div class="risk-badge risk-{{ v.risk_level }}">
+        {% if v.risk_level == 'high' %}🔴 HIGH RISK
+        {% elif v.risk_level == 'medium' %}🟡 MEDIUM RISK
+        {% else %}🟢 LOW RISK{% endif %}
+    </div>
+    <strong>{{ v.name }}</strong>
+    <span>{{ v.description }}</span>
+    <span class="risk-reason">⚠️ {{ v.risk_reason }}</span>
+    <span class="tag">Was due at {{ v.due_age }} months</span>
+</div>
+{% endfor %}
 
         {% if upcoming %}
         <div class="section upcoming-section">
