@@ -56,7 +56,7 @@
         {% if done %}
         <div class="section done-section">
             <div class="section-header">
-                <h3>✅ Completed Vaccines</h3>
+            <h3>✅ Completed Vaccines</h3>
                 <span class="count">{{ done|length }}</span>
             </div>
             <p class="section-desc">Great job! These vaccines have been administered.</p>
@@ -74,8 +74,8 @@
 
         {% if not overdue and not upcoming %}
         <div class="all-done">
-            <h3>🎉 All vaccines are up to date!</h3>
-            <p>{{ child_name }} is fully vaccinated for their age. Well done!</p>
+         <h3>🎉 All vaccines are up to date!</h3>
+         <p>{{ child_name }} is fully vaccinated for their age. Well done!</p>
         </div>
         {% endif %}
 
@@ -88,19 +88,13 @@
     </button>
 </form>
 
-        <div class="back-link">
-            <a href="/scheduler">← Check another child</a>
-        </div>
+        <div class="back-link"> <a href="/scheduler">← Check another child</a></div>
 
-        <div class="sdg-badge">
-            🌍 Supporting UN SDG 3 — Good Health & Well-being
-        </div>
+        <div class="sdg-badge">🌍 Supporting UN SDG 3 — Good Health & Well-being</div>
 
     </div>
 
-    <footer>
-        <p>💉 DoseWise — Built for GNEC Hackathon 2026 · SDG 3: Good Health & Well-being</p>
-    </footer>
+    <footer> <p>💉 DoseWise — Built for GNEC Hackathon 2026 · SDG 3: Good Health & Well-being</p></footer>
 
 </body>
 
